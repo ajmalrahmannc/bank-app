@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./home.css">
+    <title>home page</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body >
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+      <a class="navbar-brand" style="color:rgb(85, 98, 237);" href="#">HAFC Bank </a>
+      
+      <div class="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto bg-dark">
+          <li class="nav-item active m-2 bg-dark">
+            <a class="nav-link text-light " href="#">Home </a>
+          </li>
+          <li class="nav-item m-2 bg-dark">
+            <a class="nav-link text-light" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown m-2 text-light bg-dark">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Services
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" onclick="bank.balanceEnquiry()">Balance</a>
+              <a class="dropdown-item " data-toggle="modal" data-target="#depositModal">Deposit</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#transferModal" >Fund Transfer</a>
+            </div>
+          </li>
+
+          <li class="nav-item active m-2 bg-dark">
+            <a class="nav-link text-danger " onclick="bank.logout()"><i class="fa fa-power-off fa-lg bg-dark"></i></a>
+          </li>
+          
+        </ul>
+
+      </div>
+    </nav>
+
+    <!--deposit modal -->
+
+    <div class="modal " id="depositModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-light">
+          <div class="modal-header">
+            <h5 class="modal-title text-dark text-center">Self Deposit</h5>
+            <button type="button text-light" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="event.preventDefault();bank.deposit()">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">amount</span>
+                </div>
+                <input type="text" class="form-control" placeholder="amount" id="deposit_amount" required>
+                
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="deposit" class="btn float-right login_btn bg-info" style="width:50% ; border: 1px solid black;"  >
+              </div>
+            </form>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!--transfer modal -->
+
+    <div class="modal " id="transferModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-light">
+          <div class="modal-header">
+            <h5 class="modal-title text-dark text-center">Cash Transfer</h5>
+            <button type="button text-light" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="event.preventDefault();bank.fundTransfer()">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">beneficiary acc no</span>
+                </div>
+                <input type="text" class="form-control" placeholder="account number" id="benf_acc" required>
+                
+              </div>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">confirm beneficiary acc no</span>
+                </div>
+                <input type="text" class="form-control" placeholder="account number" id="cnfm_benf" required>
+                
+              </div>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">amount</span>
+                </div>
+                <input type="text" class="form-control" placeholder="amount" id="tranfer_amount" required>
+                
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Transfer" class="btn float-right login_btn bg-info" style="width:50% ; border: 1px solid black;">
+              </div>
+            </form>
+
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div id="result" class="text-dark text-center mt-auto"> 
+    <p>Hello user...Have a great day!!!</p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="./script.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </body>
+</html>

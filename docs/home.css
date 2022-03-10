@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color:rgb(36, 35, 35); */
+    /* background: linear-gradient(#e66465, #9198e5); */
+    
+    font-family: "Roboto";
+}
+
+.dropdown-menu{
+    border-radius: 5%;
+    background-color:rgb(187, 189, 188);
+}
+
+.dropdown-item{
+    color:black
+}
+
+#result{
+    color: aliceblue;
+    align-items: center;
+    
+}
+
+.modal {
+    background-color: grey;
+ }
+
+ 
+ 
